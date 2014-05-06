@@ -1,0 +1,93 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form styleClass="form-horizontal">
+		<fieldset>
+			<legend>
+					<h:outputText value="Usuario" />
+					<small> <h:outputText value="#{subtitle}" /></small>
+			</legend>
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="Nome" /></label>
+				<div class="controls">
+					<h:inputText value="#{userMB.user.name}"
+						label="Nome" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="2" maximum="20" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="Sobrenome" /></label>
+				<div class="controls">
+					<h:inputText value="#{userMB.user.surname}"
+						label="Sobrenome" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="2" maximum="50" />
+					</h:inputText>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="Login" /></label>
+				<div class="controls">
+					<h:inputText value="#{userMB.user.login}"
+						label="Login" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="5" maximum="100" />
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label"><h:outputText
+						value="Password" /></label>
+				<div class="controls">
+					<h:inputText value="#{userMB.user.password}"
+						label="Password" required="true"
+						styleClass="input-large">
+						<f:validateLength minimum="1" maximum="10" />
+					</h:inputText>
+				</div>
+			</div>
+
+
+		</fieldset>
+
+		<div class="control-group">
+			<div class="controls">
+				<p:commandButton value="#{msg['button.salvar']}"
+					action="#{userMB.salvar}" styleClass="btn btn-success" onclick="dlg.show();" oncomplete="dlg.hide();"
+					rendered="#{userMB.user != null}" />
+				<p:button value="#{msg['button.cancelar']}"
+					outcome="usersList" styleClass="btn" />
+				<p:commandButton value="#{msg['button.excluir']}"
+					onclick="confirmation.show()"
+					rendered="#{userMB.user.id != null}" immediate="true"
+					styleClass="btn btn-danger" />
+			</div>
+		</div>
+		
+		<p:dialog id="dialog" header="#{msg['dialog.emexecucao.titulo']}" widgetVar="dlg" dynamic="true" modal="true">  
+	    	<h:outputText value="#{msg['dialog.emexecucao.aguarde']}" />  
+		</p:dialog>
+		
+		<p:confirmDialog id="confirmDialog" message="Confirma exclusao de usuario"
+			header="Confirma exclusao de usuario" severity="alert" widgetVar="confirmation">  
+	        <p:commandButton id="confirm" value="#{msg['confirma.sim']}" update="messages" 
+	        	oncomplete="confirmation.hide()" action="#{userMB.remover}" />  
+	        <p:commandButton id="decline" value="#{msg['confirma.nao']}" 
+	        	onclick="confirmation.hide()" type="button" />
+	    </p:confirmDialog>
+	
+		<p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
+		<h:inputHidden value="#{userMB.user.id}" rendered="#{userMB.user.id != null}"/>
+	</h:form>
+</ui:fragment>
