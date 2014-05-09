@@ -20,14 +20,14 @@ public class User implements AbstractEntity  {
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Integer id;
 	    
-	    @Column(length = 0, unique = true, nullable = false)
+	    @Column(length = 40, unique = true, nullable = false)
 	    private String login;
 	    
 	    @Column(length = 40, nullable = false)
 	    private String password;
 	    
 
-		@Column(length = 20, nullable = false)
+		@Column(length = 40, nullable = false)
 	    private String name;   
 	    
 	    @Column(length = 50, nullable = false)
