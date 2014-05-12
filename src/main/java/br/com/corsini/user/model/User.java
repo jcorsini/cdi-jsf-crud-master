@@ -5,16 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import br.com.corsini.utils.AbstractEntity;
+import br.com.corsini.utils.Query;
 
 
 @Entity
 @Table(name="user")
+@NamedQueries(value = { @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login LIKE :login") })
 public class User implements AbstractEntity  {
-
-	private static final long serialVersionUID = 1583248914760632185L;
+	
+		private static final long serialVersionUID = 1583248914760632185L;
+		
+		public static final Query<User> FIND_BY_LOGIN = Query.valueOf(User.class, "User.findByLogin", "login");
 
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)

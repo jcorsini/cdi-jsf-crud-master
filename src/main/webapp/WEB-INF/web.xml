@@ -19,37 +19,19 @@
 		<param-value>.xhtml</param-value>
 	</context-param>
 
-	<welcome-file-list>
-		<welcome-file>/index.jsp</welcome-file>
-	</welcome-file-list>
-
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-	<!-- <login-config>
-		<auth-method>FORM</auth-method>
-		<realm-name>K19-Realm</realm-name>
-		<form-login-config>
-			<form-login-page>/login.xhtml</form-login-page>
-			<form-error-page>/acesso-negado.xhtml</form-error-page>
-		</form-login-config>
-	</login-config>
-
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>resources</web-resource-name>
-			<url-pattern>/*</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>ADMIN</role-name>
-			<role-name>USERS</role-name>
-		</auth-constraint>
-	</security-constraint> -->
+	<!-- <login-config> <auth-method>FORM</auth-method> <realm-name>K19-Realm</realm-name> 
+		<form-login-config> <form-login-page>/login.xhtml</form-login-page> <form-error-page>/acesso-negado.xhtml</form-error-page> 
+		</form-login-config> </login-config> <security-constraint> <web-resource-collection> 
+		<web-resource-name>resources</web-resource-name> <url-pattern>/*</url-pattern> 
+		<http-method>GET</http-method> <http-method>POST</http-method> </web-resource-collection> 
+		<auth-constraint> <role-name>ADMIN</role-name> <role-name>USERS</role-name> 
+		</auth-constraint> </security-constraint> -->
 
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
